@@ -26,10 +26,10 @@ export function App() {
   const addContact = ({ name, number }) => {
     const newContact = { id: nanoid(), name, number };
 
-    contacts.some(contact => contact.name === name)
+    contacts.some(contact => contact.name === name || contact.number === number)
       ? Report.warning(
           `${name}`,
-          'This user is already in the contact list.',
+          'This user or number is already in the contact list.',
           'OK'
         )
       : setContacts(prevContacts => [...prevContacts, newContact]);
